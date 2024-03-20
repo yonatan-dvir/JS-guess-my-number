@@ -17,19 +17,34 @@ document.querySelector(".check").addEventListener("click", () => {
 
   // Inform the user that the guess is too high and decrement the score.
   else if (guess > randomNum) {
-    document.querySelector(".message").textContent = "Too high! Try again.. ):";
-    document.querySelector(".score").textContent = --score;
+    if (score > 1) {
+      document.querySelector(".message").textContent =
+        "Too high! Try again.. ):";
+      document.querySelector(".score").textContent = --score;
+    } else {
+      document.querySelector(".message").textContent =
+        "Too many guesses - you lost the game ):";
+      document.querySelector(".score").textContent = --score;
+    }
   }
 
   // Inform the user that the guess is too low and decrement the score.
   else if (guess < randomNum) {
-    document.querySelector(".message").textContent = "Too low! Try again.. ):";
-    document.querySelector(".score").textContent = --score;
+    if (score > 1) {
+      document.querySelector(".message").textContent =
+        "Too low! Try again.. ):";
+      document.querySelector(".score").textContent = --score;
+    } else {
+      document.querySelector(".message").textContent = "You lost the game ):";
+      document.querySelector(".score").textContent = --score;
+    }
   }
 
   // Congratulate the user for the correct guess and reveal the number.
   else {
     document.querySelector(".message").textContent = "Correct! You did it (:";
     document.querySelector(".number").textContent = randomNum;
+    document.querySelector("body").style.backgroundColor = "#60b347";
+    document.querySelector(".number").style.width = "30rem";
   }
 });
