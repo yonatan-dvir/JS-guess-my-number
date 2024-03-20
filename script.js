@@ -1,10 +1,13 @@
 "use strict";
 
 // Generates a random nuber between 1 to 20
-const randomNum = Math.trunc(Math.random() * 20) + 1;
+let randomNum = Math.trunc(Math.random() * 20) + 1;
 
 // Initializes the game score to 20. The score decreases by 1 with each incorrect guess.
 let score = 20;
+
+// Initialize the highscore to 0.
+let highscore = 0;
 
 // add event listener to the check button
 document.querySelector(".check").addEventListener("click", () => {
@@ -46,5 +49,20 @@ document.querySelector(".check").addEventListener("click", () => {
     document.querySelector(".number").textContent = randomNum;
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector(".highscore").textContent = highscore;
+    }
   }
+});
+
+// Resets the game when user clicks the Again button
+document.querySelector(".again").addEventListener("click", () => {
+  score = 20;
+  document.querySelector("body").style.backgroundColor = "#222";
+  document.querySelector(".number").style.width = "15rem";
+  document.querySelector(".number").textContent = "?";
+  document.querySelector(".score").textContent = score;
+  document.querySelector(".message").textContent = "Start guessing...";
+  document.querySelector(".guess").value = "";
 });
