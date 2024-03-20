@@ -1,26 +1,33 @@
 "use strict";
 
+// Generates a random nuber between 1 to 20
 const randomNum = Math.trunc(Math.random() * 20) + 1;
 
+// Initializes the game score to 20. The score decreases by 1 with each incorrect guess.
+let score = 20;
+
+// add event listener to the check button
 document.querySelector(".check").addEventListener("click", () => {
   const guess = Number(document.querySelector(".guess").value);
 
-  // If the user clicked check but didn't guess a number, tell him to guess one.
+  // Prompt the user to input a valid number if the guess field is empty or 0.
   if (!guess) {
     document.querySelector(".message").textContent = "Please guess a number!";
   }
 
-  // If the guess is too high
+  // Inform the user that the guess is too high and decrement the score.
   else if (guess > randomNum) {
     document.querySelector(".message").textContent = "Too high! Try again.. ):";
+    document.querySelector(".score").textContent = --score;
   }
 
-  // If the guess is too low
+  // Inform the user that the guess is too low and decrement the score.
   else if (guess < randomNum) {
     document.querySelector(".message").textContent = "Too low! Try again.. ):";
+    document.querySelector(".score").textContent = --score;
   }
 
-  // Else, the user succeed!
+  // Congratulate the user for the correct guess and reveal the number.
   else {
     document.querySelector(".message").textContent = "Correct! You did it (:";
     document.querySelector(".number").textContent = randomNum;
