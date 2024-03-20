@@ -27,7 +27,8 @@ document.querySelector(".check").addEventListener("click", () => {
     } else {
       document.querySelector(".message").textContent =
         "Too many guesses - you lost the game ):";
-      document.querySelector(".score").textContent = --score;
+      document.querySelector(".score").textContent = 0;
+      document.querySelector("body").style.backgroundColor = "#FF0000";
     }
   }
 
@@ -39,7 +40,8 @@ document.querySelector(".check").addEventListener("click", () => {
       document.querySelector(".score").textContent = --score;
     } else {
       document.querySelector(".message").textContent = "You lost the game ):";
-      document.querySelector(".score").textContent = --score;
+      document.querySelector(".score").textContent = 0;
+      document.querySelector("body").style.backgroundColor = "#FF0000";
     }
   }
 
